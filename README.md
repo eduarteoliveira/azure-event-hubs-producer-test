@@ -1,1 +1,0 @@
-# azure-event-hubs-producer-test

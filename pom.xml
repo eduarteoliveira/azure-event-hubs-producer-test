@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.cerc.billing</groupId>
+	<artifactId>azure-event-hubs-producer-test</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<name>azure-event-hubs-producer-test</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>11</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+		<junit.version>4.13.2</junit.version>
+		<managed-identity-auth.version>1.1-SNAPSHOT</managed-identity-auth.version>
+		<kafka-clients.version>3.2.2</kafka-clients.version>
+		<kafka-avro-serializer.version>7.2.1</kafka-avro-serializer.version>
+		<slf4j-api.version>2.0.2</slf4j-api.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.cerc.billing</groupId>
+			<artifactId>managed-identity-auth</artifactId>
+			<version>${managed-identity-auth.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>${kafka-clients.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.confluent</groupId>
+			<artifactId>kafka-avro-serializer</artifactId>
+			<version>${kafka-avro-serializer.version}</version>
+		</dependency>
+	</dependencies>
+	
+	<distributionManagement>
+	   <repository>
+		 <id>github</id>
+		 <name>GitHub OWNER Apache Maven Packages</name>
+		 <url>https://maven.pkg.github.com/eduarteoliveira/azure-event-hubs-producer-test</url>
+	   </repository>
+	</distributionManagement>
+	
+	<!-- <distributionManagement>
+        <repository>
+            <id>cerc-utils@Local</id>
+            <url>https://pkgs.dev.azure.com/Cerc-Recebiveis/_packaging/cerc-utils/maven/v1</url>
+        </repository>
+    </distributionManagement> -->
+
+	<repositories>
+		<repository>
+			<id>cerc-utils@Local</id>
+			<url>https://pkgs.dev.azure.com/Cerc-Recebiveis/_packaging/cerc-utils/maven/v1</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>confluent</id>
+			<url>https://packages.confluent.io/maven/</url>
+		</repository>
+		<repository>
+			<id>mapr-maven</id>
+			<url>https://packages.confluent.io/maven/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<build>
+		<finalName>${name}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
